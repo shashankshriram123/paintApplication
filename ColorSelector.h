@@ -3,8 +3,7 @@
 
 #include "Rectangle.h"
 
-struct ColorSelector {
-private:
+class ColorSelector {
     Rectangle area;
     Rectangle redButton;
     Rectangle greenButton;
@@ -24,45 +23,36 @@ public:
         greenButton = Rectangle(-0.6f, -0.8f, 0.2f, 0.2f, Color(0.0f, 1.0f, 0.0f));
         blueButton = Rectangle(-0.4f, -0.8f, 0.2f, 0.2f, Color(0.0f, 0.0f, 1.0f));
 
-        setRed();
-    }
-
-    Color getCurrentColor(){
-        return currentColor;
-    }
-
-    void setRed(){
-        deselectAll();
-        currentColor = Color(1.0f, 0.0f, 0.0f);
         redButton.select();
-    }
-    
-    void setGreen(){
-        deselectAll();
-        currentColor = Color(0.0f, 1.0f, 0.0f);
-        greenButton.select();
+        currentColor.setRed();
     }
 
-    void setBlue(){
-        deselectAll();
-        currentColor = Color(0.0f, 0.0f, 1.0f);
-        blueButton.select();
+    // getters
+    Color getCurrentColor() {
+        return currentColor;
     }
 
     void handleMouseClick(float x, float y){
         if (redButton.contains(x, y)){
-            setRed();
+            deselectAll();
+            redButton.select();
+            currentColor.setRed();
         }
         else if (greenButton.contains(x, y)){
-            setGreen();
+            deselectAll();
+            greenButton.select();
+            currentColor.setGreen();
         }
         else if (blueButton.contains(x, y)){
-            setBlue();
+            deselectAll();
+            blueButton.select();
+            currentColor.setBlue();
         }
     }
 
     void draw(){
         area.draw();
+
         redButton.draw();
         greenButton.draw();
         blueButton.draw();

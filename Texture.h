@@ -1,13 +1,12 @@
 #ifndef TEXTURE_H
 #define TEXTURE_H
 
-#include <iostream>
 #include <GL/freeglut.h>
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
+#include <iostream>
 
-struct Texture {
-private:
+class Texture {
     std::string imagePath;
     float x;
     float y;
@@ -43,7 +42,7 @@ public:
     Texture() {
         //
     }
-    
+
     Texture(std::string imagePath, float x, float y, float w, float h) {
         this->imagePath = imagePath;
         this->x = x;
@@ -54,6 +53,7 @@ public:
         loadTexture();
     }
 
+    // setters
     void select() {
         selected = true;
     }
@@ -76,6 +76,7 @@ public:
             glVertex2f(x + w, y - h);
         glEnd();
 
+        glLineWidth(1.0f);
         glColor3f(0.0f, 0.0f, 0.0f);
         glBegin(GL_LINES);
             glVertex2f(x, y - h);
@@ -114,7 +115,6 @@ public:
             glTexCoord2f(1.0f, 0.0f); 
             glVertex2f(x + w, y - h);
         glEnd();
-        
         glDisable(GL_TEXTURE_2D);
     }
 

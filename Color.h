@@ -3,8 +3,7 @@
 
 #include <GL/freeglut.h>
 
-struct Color {
-private:
+class Color {
     float r;
     float g;
     float b;
@@ -21,13 +20,13 @@ public:
         this->g = g;
         this->b = b;
     }
-
-    void setColor(float r, float g, float b) {
-        this->r = r;
+    void setColor(float r, float g, float b ){
+            this->r = r;
         this->g = g;
         this->b = b;
     }
 
+    // getters
     float getR() {
         return r;
     }
@@ -38,6 +37,25 @@ public:
 
     float getB() {
         return b;
+    }
+
+    // setters
+    void setRed() {
+        r = 1.0f;
+        g = 0.0f;
+        b = 0.0f;
+    }
+
+    void setGreen() {
+        r = 0.0f;
+        g = 1.0f;
+        b = 0.0f;
+    }
+
+    void setBlue() {
+        r = 0.0f;
+        g = 0.0f;
+        b = 1.0f;
     }
 };
 

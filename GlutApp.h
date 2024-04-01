@@ -1,8 +1,8 @@
 #ifndef GLUTAPP_H
 #define GLUTAPP_H
 
-#include <stdexcept>
 #include <GL/freeglut.h>
+#include <stdexcept>
 #include "AppController.h"
 
 struct GlutApp;
@@ -12,7 +12,7 @@ void cleanup();
 static GlutApp* singleton = nullptr;
 
 
-struct GlutApp{
+struct GlutApp {
     int height;
     int width;
     std::string title;

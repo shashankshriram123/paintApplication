@@ -2,10 +2,10 @@
 #define POINT_H
 
 #include <GL/freeglut.h>
+#include <GL/gl.h>
 #include "Color.h"
 
-struct Point {
-private:
+class Point {
     float x;
     float y;
     Color color;
@@ -29,6 +29,40 @@ public:
         this->x = x;
         this->y = y;
         this->color = color;
+        this->thickness = thickness;
+    }
+
+    // getters
+    float getX() {
+        return x;
+    }
+
+    float getY() {
+        return y;
+    }
+
+    Color getColor() {
+        return color;
+    }
+
+    float getThickness() {
+        return thickness;
+    }
+
+    // setters
+    void setX(float x) {
+        this->x = x;
+    }
+
+    void setY(float y) {
+        this->y = y;
+    }
+
+    void setColor(Color color) {
+        this->color = color;
+    }
+
+    void setThickness(float thickness) {
         this->thickness = thickness;
     }
 

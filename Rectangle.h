@@ -2,16 +2,14 @@
 #define RECTANGLE_H
 
 #include <GL/freeglut.h>
+#include "Shape.h"
 #include "Color.h"
 
-struct Rectangle {
-private:
-    float x;
-    float y;
+class Rectangle : public Shape {
     float w;
     float h;
+
     Color color;
-    bool selected;
 
 public:
     Rectangle() {
@@ -31,21 +29,30 @@ public:
         selected = false;
     }
 
-    void setColor(Color color) {
-        this->color = color;
+    // getters
+    float getW() {
+        return w;
+    }
+    
+    float getH() {
+        return h;
     }
 
-    void select() {
-        selected = true;
+
+
+    // setters
+    void setW(float w) {
+        this->w = w;
+    }
+    
+    void setH(float h) {
+        this->h = h;
     }
 
-    void deselect() {
-        selected = false;
-    }
+ 
 
     void draw() {
         glColor3f(color.getR(), color.getG(), color.getB());
-
         glBegin(GL_POLYGON);
             glVertex2f(x, y);
             glVertex2f(x + w, y);
@@ -60,6 +67,11 @@ public:
             inner.draw();
         }
     }
+
+    void setColor(Color color) {
+        this->color = color;
+    }
+   
 
     bool contains(float mx, float my) {
         if (mx >= x && mx <= x + w && my <= y && my >= y - h) {
